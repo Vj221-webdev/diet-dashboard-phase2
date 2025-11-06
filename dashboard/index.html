@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutritional Insights Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">Nutritional Insights</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Loading Indicator -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Loading data...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error" class="error-message hidden"></div>
+
+            <!-- Visualizations Section -->
+            <section class="section">
+                <h2 class="section-title">Explore Nutritional Insights</h2>
+                
+                <div class="charts-grid">
+                    <!-- Bar Chart -->
+                    <div class="chart-card">
+                        <h3 class="chart-title">Bar Chart</h3>
+                        <p class="chart-description">Average macronutrient content by diet type.</p>
+                        <canvas id="barChart"></canvas>
+                    </div>
+
+                    <!-- Scatter Plot -->
+                    <div class="chart-card">
+                        <h3 class="chart-title">Scatter Plot</h3>
+                        <p class="chart-description">Nutrient relationships (e.g., protein vs carbs).</p>
+                        <canvas id="scatterChart"></canvas>
+                    </div>
+
+                    <!-- Heatmap -->
+                    <div class="chart-card">
+                        <h3 class="chart-title">Heatmap</h3>
+                        <p class="chart-description">Nutrient correlations.</p>
+                        <canvas id="heatmapChart"></canvas>
+                    </div>
+
+                    <!-- Pie Chart -->
+                    <div class="chart-card">
+                        <h3 class="chart-title">Pie Chart</h3>
+                        <p class="chart-description">Recipe distribution by diet type.</p>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters Section -->
+            <section class="section">
+                <h2 class="section-title">Filters and Data Interaction</h2>
+                
+                <div class="filters-container">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="filter-input" 
+                        placeholder="Search by Diet Type"
+                    >
+                    
+                    <select id="dietTypeFilter" class="filter-select">
+                        <option value="all">All Diet Types</option>
+                        <option value="paleo">Paleo</option>
+                        <option value="keto">Keto</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="mediterranean">Mediterranean</option>
+                        <option value="dash">DASH</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- API Interaction Section -->
+            <section class="section">
+                <h2 class="section-title">API Data Interaction</h2>
+                
+                <div class="api-buttons">
+                    <button id="btnNutritionalInsights" class="btn btn-primary">
+                        Get Nutritional Insights
+                    </button>
+                    <button id="btnRecipes" class="btn btn-success">
+                        Get Recipes
+                    </button>
+                    <button id="btnClusters" class="btn btn-purple">
+                        Get Clusters
+                    </button>
+                </div>
+
+                <!-- API Response Display -->
+                <div id="apiResponse" class="api-response hidden">
+                    <h3>API Response</h3>
+                    <pre id="apiResponseContent"></pre>
+                </div>
+            </section>
+
+            <!-- Recipes Table Section -->
+            <section class="section" id="recipesSection" style="display: none;">
+                <h2 class="section-title">Recipe List</h2>
+                
+                <div class="table-container">
+                    <table class="recipes-table">
+                        <thead>
+                            <tr>
+                                <th>Recipe Name</th>
+                                <th>Diet Type</th>
+                                <th>Cuisine</th>
+                                <th>Protein (g)</th>
+                                <th>Carbs (g)</th>
+                                <th>Fat (g)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recipesTableBody">
+                            <!-- Dynamic content -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Pagination -->
+            <section class="section">
+                <h2 class="section-title">Pagination</h2>
+                
+                <div class="pagination" id="pagination">
+                    <button class="pagination-btn" id="prevBtn" disabled>Previous</button>
+                    <span class="pagination-info">
+                        <button class="pagination-btn active">1</button>
+                        <button class="pagination-btn">2</button>
+                    </span>
+                    <button class="pagination-btn" id="nextBtn">Next</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Nutritional Insights. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Configuration Modal (for setting API URL) -->
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <h2>Configure API Endpoint</h2>
+            <p>Enter your Azure Function URL:</p>
+            <input 
+                type="text" 
+                id="apiUrlInput" 
+                class="modal-input" 
+                placeholder="https://your-function-app.azurewebsites.net/api"
+            >
+            <button id="saveApiUrl" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
