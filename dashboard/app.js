@@ -1,5 +1,5 @@
 // Configuration
-let API_BASE_URL = 'https://dietfunctionvijay-c6b8c6dwgqfaaph5.canadacentral-01.azurewebsites.net/api'; // Default for local testing
+let API_BASE_URL = 'https://dietfunctionvijay.azurewebsites.net/api'; // Default for local testing
 let currentPage = 1;
 let chartInstances = {};
 
