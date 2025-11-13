@@ -1,4 +1,3 @@
 azure-functions
-pandas
-numpy
 azure-storage-blob
+pandas
