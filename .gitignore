@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Azure Functions
+local.settings.json
+.venv/
+.python_packages/
+__blobstorage__/
+__queuestorage__/
+__azurite_db*__.json
+
+# IDE
+
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Deployment
+deployment-info.txt
+function-deployment.zip
+*.zip
+
+# Node modules (if using npm)
+node_modules/
+
+# Temporary files
+*.tmp
+.cache/
+
+# Screenshots (add manually)
+# screenshots/
+
+# Dataset (optional - can be tracked)
+# All_Diets.csv
